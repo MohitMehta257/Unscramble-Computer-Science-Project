@@ -1,4 +1,5 @@
 
+
 import csv
 with open('calls.csv','r') as f:
     data=csv.reader(f)
@@ -61,7 +62,10 @@ l4=[]
 for each in l3:
     if(l4.count(each)==0):
         l4.append(each)
- 
-print("These numbers could be telemarketers: ",sorted(l4))       
+l4=sorted(l4)
+print("These numbers could be telemarketers: ")
+for each in l4:
+    print(each)
+       
 
     
