@@ -1,16 +1,36 @@
-
+import operator
 import csv
 with open('calls.csv','r') as f:
     data=csv.reader(f)
     text=list(data)
-
-l=[]
+ph=[]
+call=[]
+receive=[]
+dur=[]
 for i in range(len(text)):
-    l.append(text[i][3])
-for i in range(len(l)):
-    l[i]=int(l[i])
+    call.append(text[i][0])
+    
+for i in range(len(text)):
+    receive.append(text[i][1])
+    
+for i in range(len(call)):
+    for j in range(len(receive)):
+        if(call[i]==receive[j]):
+            ph.append(call[i])
+            
+for i in range(len(text)):
+    dur.append(text[i][3])
+for i in range(len(dur)):
+    dur[i]=int(dur[i])
 
-dur=sorted(l)
-t=dur[len(l)-1]
-print(text[l.index(t)][0],"spent the longest time",text[l.index(t)][3],"seconds, on the phone during September 2016.")
-
+            
+d={}
+for each in ph:
+    i1=call.index(each)
+    i2=receive.index(each)
+    t=dur[i1]+dur[i2]
+    
+    d[each]=t
+d = sorted(d.items(), key=operator.itemgetter(1))
+t=list(d[len(d)-1])
+print(t[0],"spent the longest time",t[1],"seconds, on the phone during September 2016.")
