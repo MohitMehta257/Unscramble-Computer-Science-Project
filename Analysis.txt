@@ -16,10 +16,8 @@ O(n)
 Task 3: 
 
 
-Part A: O(n) 
-
-Part B: O(n)
+O(nlog(n)) 
 
 Task 4: 
 
-O(n)
+O(nlog(n)
